@@ -1,9 +1,7 @@
 package com.example.restapi.controller;
 
 import com.example.restapi.service.CardService;
-import com.example.restapi.service.impl.CardServiceImpl;
 import com.example.restapi.user.Card;
-import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,4 +20,5 @@ public class CardController {
         cardService.addCardToList();
         return cardService.getCard(id);
     }
+
 }

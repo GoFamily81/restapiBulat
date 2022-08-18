@@ -5,6 +5,8 @@ import com.example.restapi.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 //@RestController возвращает объект, а данные объекта напрямую записываются в HTTP-ответ в виде JSON или XML.
 @RestController
 //@RequestMapping аннотация, которая отображает http-запрос /user
@@ -35,7 +37,7 @@ public class UserController {
     }
 
     //Создаем http-запрос POST, который отправляет тело запроса
-    @PostMapping("/post")
+    @PostMapping("/post/{id}")
     //Описываем метод addUser, в который с помощью аннотации @RequestBody помещается объект user c типом данных User
     public User addUser(@RequestBody User user) {
         //Возврат метода переопределенного метода addUser в , в который передается объект user
@@ -45,19 +47,26 @@ public class UserController {
     //Создаем http-запрос DELETE
     //С помощью аннотации @PathVariable переменной id присваивается значение http-запроса
     @DeleteMapping("/delete/{id}")
-    public String deleteUserById(@PathVariable String id) {
+    public String deleteUserById(@PathVariable Integer id) {
         //Возврат переопределенного метода deleteUserById, описанного в классе UserServiceImpl,
         // в который присваивается значение переменной id
         return userService.deleteUserById(id);
     }
 
     //Создаем http-запрос PUT
-    @PutMapping("/put")
+    @PutMapping("/putuser/{id}")
     //Описание метода putUser
-    public String putUser() {
+    public User putUser(@PathVariable Integer id,@RequestBody User user) {
         //Возврат переопределенного метода putUser в классе UserServiceImpl
-        return userService.putUser();
+        return userService.putUser(id,user);
     }
 
+    //Создаем http-запрос GET c url-адресом /user/getallusers
+    @GetMapping("/getallusers")
+    //Создание метода getAllUsers с типом List<User>
+    public List<User> getAllUsers() {
+        //Возврат значения метода userService.getAllUsers()
+        return userService.getAllUsers();
+    }
 
 }
