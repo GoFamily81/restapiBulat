@@ -1,18 +1,23 @@
 package com.example.restapi.user;
 
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//Аннотация @AllArgsConstructor заменяет конструктор со всеми полями класса
-@AllArgsConstructor
-//Аннотация @Data заменяет геттеры, сеттеры и метод toString(), а также @EqualsAndHashCode и @RequiredArgsConstructor
-@Data
-//Аннотация @NoArgsConstructor заменяет пустой конструктор
-@NoArgsConstructor
+import javax.persistence.*;
 
+//Аннотация @AllArgsConstructor заменяет конструктор со всеми полями класса
+@NoArgsConstructor
+@Data
+@Entity
+@Table(name = "cards")
+//Создание публичного класса User
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class Card {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     //Создание приватного поля cardNumber с типом данных String
     private String cardNumber;
 

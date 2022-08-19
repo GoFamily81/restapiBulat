@@ -23,13 +23,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Создание приватного поля id с типом данных Integer
     private Integer id;
-    @Column(name = "first_name")
+    @Column(name = "user_name")
     //Создание приватного поля name с типом данных String
-    private String firstName;
-    @Column(name = "last_name")
+    private String userName;
+    @Column(name = "sur_name")
     //Создание приватного поля surname с типом данных String
-    private String lastName;
-
-    //Создание приватного поля card с типом данных Card
+    private String surName;
+    @Column(name = "age")
+    private Integer age;
 
 }

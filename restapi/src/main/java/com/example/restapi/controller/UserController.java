@@ -37,7 +37,7 @@ public class UserController {
     }
 
     //Создаем http-запрос POST, который отправляет тело запроса
-    @PostMapping("/post/{id}")
+    @PostMapping("/post")
     //Описываем метод addUser, в который с помощью аннотации @RequestBody помещается объект user c типом данных User
     public User addUser(@RequestBody User user) {
         //Возврат метода переопределенного метода addUser в , в который передается объект user

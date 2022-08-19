@@ -1,56 +1,48 @@
 package com.example.restapi.service.impl;
 
 
-
+import com.example.restapi.repository.CardRepository;
 import com.example.restapi.service.CardService;
 import com.example.restapi.user.Card;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class CardServiceImpl implements CardService {
-    //Создание листа карт
 
-    public static List<Card> cardList = new ArrayList<Card>();
+    Card card = new Card();
 
-    //Создание экземпляра класса Card Алексей Алексеев и заполнение конструктора
-    public Card cardAlexey = new Card("4420 2200 4578 3486",
-            "Алексей",
-            "Алексеев",
-            "Tinkoff");
-    public Card cardEduard = new Card("4587 3422 5678 2200",
-            "Эдуард",
-            "Хусаинов",
-            "Tinkoff");
-
+    @Autowired
+    CardRepository cardRepository;
 
     @Override
     public Card addCard(Card card) {
-        return null;
+        return cardRepository.save(card);
     }
 
     @Override
-    public String putCard() {
-        return null;
+    public Card putCard(Integer id,Card card) {
+        card.setId(id);
+        cardRepository.save(card);
+        return getCard(id) ;
     }
 
     @Override
     public Card getCard(Integer id) {
-        return cardList.get(id);
+        return cardRepository.getById(id);
     }
 
     @Override
     public String deleteCard(Integer id) {
-        return null;
+        cardRepository.deleteById(id);
+        return "Card has been deleted with id " + id;
     }
 
     @Override
-    public List<Card> addCardToList(){
-        cardList.add(0,cardAlexey);
-        cardList.add(1,cardEduard);
-        return cardList;
+    public List<Card> getAllCards() {
+        return cardRepository.findAll();
     }
 
 }

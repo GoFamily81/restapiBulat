@@ -7,11 +7,11 @@ import java.util.List;
 public interface CardService {
     Card addCard(Card card);
 
-    String putCard();
+    Card putCard(Integer id,Card card);
 
     Card getCard(Integer id);
 
     String deleteCard(Integer id);
 
-    public List<Card> addCardToList();
+    public List<Card> getAllCards();
 }

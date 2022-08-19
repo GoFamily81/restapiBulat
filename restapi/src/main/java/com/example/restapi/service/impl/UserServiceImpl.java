@@ -37,9 +37,8 @@ public class UserServiceImpl implements UserService {
     @Override
     //Реализация метода putUser без входящих параметров
     public User putUser(Integer id,User user) {
-        getUserById(id).setFirstName(user.getFirstName());
-        getUserById(id).setLastName(user.getLastName());
-
+        user.setId(id);
+        userRepository.save(user);
         //Возврат строки:User was changed и значение переменной id
         return getUserById(id);
     }
