@@ -13,7 +13,7 @@ public interface UserService {
     String deleteUserById(Integer id);
 
     //Создание метода putUser типа String
-    User putUser(Integer id,User user);
+    User putUser(Integer id, User user);
 
     //Создание метода getUserById типа User с входящим параметром id типа Integer
     User getUserById(Integer id);
@@ -22,4 +22,5 @@ public interface UserService {
     String getUserByFlow(String flow, String slovo);
 
     List<User> getAllUsers();
+
 }

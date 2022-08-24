@@ -15,10 +15,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
-
-    //Создание экземпляра класса User
-    User userChange = new User();
-
     //аннотация @Override проверяет переопределен ли метод
     @Override
     //Реализация метода addUser c входящим параметром user типа User
@@ -36,7 +32,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     //Реализация метода putUser без входящих параметров
-    public User putUser(Integer id,User user) {
+    public User putUser(Integer id, User user) {
         user.setId(id);
         userRepository.save(user);
         //Возврат строки:User was changed и значение переменной id
@@ -60,6 +56,5 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-
 
 }

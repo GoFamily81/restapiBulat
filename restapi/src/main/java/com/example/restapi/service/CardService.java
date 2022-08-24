@@ -13,5 +13,5 @@ public interface CardService {
 
     String deleteCard(Integer id);
 
-    public List<Card> getAllCards();
+    List<Card> getAllCards();
 }

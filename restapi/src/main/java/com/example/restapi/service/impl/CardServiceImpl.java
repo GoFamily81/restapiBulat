@@ -12,8 +12,6 @@ import java.util.List;
 @Service
 public class CardServiceImpl implements CardService {
 
-    Card card = new Card();
-
     @Autowired
     CardRepository cardRepository;
 
