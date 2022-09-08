@@ -1,11 +1,13 @@
 package com.example.restapi.service.impl;
 
+import com.example.restapi.dto.UserDto;
 import com.example.restapi.repository.UserRepository;
 import com.example.restapi.service.UserService;
 import com.example.restapi.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //Объявление класса UserServiceImpl - Сервисом
@@ -15,6 +17,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
+
     //аннотация @Override проверяет переопределен ли метод
     @Override
     //Реализация метода addUser c входящим параметром user типа User
@@ -55,6 +58,24 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public UserDto getUserByIdDto() {
+        UserDto userDto = new UserDto();
+        User user = userRepository.getById(1);
+        List<String> brand = new ArrayList<>();
+        userDto.setUserName(user.getUserName());
+        userDto.setSurName(user.getSurName());
+        userDto.setBankName(user.getCard().getBankName());
+
+        for (int i = 0; i < user.getCarList().size(); i++) {
+            brand.add(user.getCarList().get(i).getCarBrand());
+        }
+
+        userDto.setCarBrand(brand);
+
+        return userDto;
     }
 
 }

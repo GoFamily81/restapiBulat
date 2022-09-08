@@ -1,5 +1,6 @@
 package com.example.restapi.controller;
 
+import com.example.restapi.dto.UserDto;
 import com.example.restapi.service.UserService;
 import com.example.restapi.user.User;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -56,5 +57,8 @@ public class UserController {
         //Возврат значения метода userService.getAllUsers()
         return userService.getAllUsers();
     }
-
+    @GetMapping("/getdto")
+    public UserDto getUserByIdDto(){
+        return userService.getUserByIdDto();
+    }
 }

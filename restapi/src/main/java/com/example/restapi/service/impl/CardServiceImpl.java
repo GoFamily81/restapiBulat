@@ -43,4 +43,12 @@ public class CardServiceImpl implements CardService {
         return cardRepository.findAll();
     }
 
+    @Override
+    public List<Card> getListCard() {
+        List<Card> cards = cardRepository.getListCardBetween();
+        cards.get(0).setCardNumber("24-5824-7246-33");
+        return cards;
+    }
+
+
 }

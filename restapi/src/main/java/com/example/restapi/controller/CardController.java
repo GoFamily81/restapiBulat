@@ -41,4 +41,9 @@ public class CardController {
     public Card putCardById(@PathVariable Integer id, @RequestBody Card card) {
         return cardService.putCard(id, card);
     }
+
+    @GetMapping("/sql")
+    public List<Card> getListCard(){
+        return cardService.getListCard();
+    }
 }

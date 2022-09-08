@@ -1,5 +1,6 @@
 package com.example.restapi.service;
 
+import com.example.restapi.dto.UserDto;
 import com.example.restapi.user.User;
 
 import java.util.List;
@@ -23,4 +24,5 @@ public interface UserService {
 
     List<User> getAllUsers();
 
+    UserDto getUserByIdDto();
 }
